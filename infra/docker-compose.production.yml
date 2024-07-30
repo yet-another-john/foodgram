@@ -14,7 +14,7 @@ services:
       - pg_data:/var/lib/postgresql/data
 
   backend:
-    image: stoliarovea/foodgram_backend
+    image: daniyaralzhanov/foodgram_backend
     hostname: backend
     restart: always
     env_file: .env
@@ -25,15 +25,15 @@ services:
       - media:/app/media/
 
   frontend:
-    image: stoliarovea/foodgram_frontend
+    image: daniyaralzhanov/foodgram_frontend
     volumes:
       - ../frontend/:/app/result_build/
 
   nginx:
-    image: stoliarovea/foodgram_gateway
+    image: daniyaralzhanov/foodgram_gateway
     env_file: .env
     ports:
-      - "8080:80"
+      - "8000:80"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - static:/staticfiles/
@@ -42,3 +42,5 @@ services:
       - ./docs/:/usr/share/nginx/html/api/docs/
     depends_on:
       - backend
+
+
