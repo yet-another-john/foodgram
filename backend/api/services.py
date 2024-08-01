@@ -1,3 +1,4 @@
+# isort: skip_file
 """Project's services."""
 
 from django.shortcuts import get_object_or_404

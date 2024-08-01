@@ -1,3 +1,4 @@
+# isort: skip_file
 """Recipes models."""
 
 import random

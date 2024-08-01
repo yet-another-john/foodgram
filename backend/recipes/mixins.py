@@ -1,3 +1,4 @@
+# isort: skip_file
 """Mixins."""
 
 from django.contrib import admin

@@ -1,3 +1,4 @@
+# isort: skip_file
 """Project's settings."""
 
 import os

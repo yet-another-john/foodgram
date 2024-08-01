@@ -1,3 +1,4 @@
+# isort: skip_file
 """Filters for project."""
 
 from django_filters.rest_framework import FilterSet, filters

@@ -1,3 +1,4 @@
+# isort: skip_file
 """App user."""
 
 from django.apps import AppConfig

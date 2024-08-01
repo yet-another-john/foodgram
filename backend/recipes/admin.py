@@ -1,3 +1,4 @@
+# isort: skip_file
 """Admin."""
 
 from django.contrib import admin

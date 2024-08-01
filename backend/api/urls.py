@@ -1,3 +1,4 @@
+# isort: skip_file
 """Urls."""
 
 from django.urls import include, path

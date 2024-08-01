@@ -1,3 +1,4 @@
+# isort: skip_file
 """Project's constants."""
 
 BASE_USER_FIELDS_LIMIT = 6

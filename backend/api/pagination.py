@@ -1,3 +1,4 @@
+# isort: skip_file
 """Pagination class."""
 
 from rest_framework.pagination import PageNumberPagination

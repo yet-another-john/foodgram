@@ -1,3 +1,4 @@
+# isort: skip_file
 """Main urls."""
 
 from django.contrib import admin

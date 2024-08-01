@@ -1,3 +1,4 @@
+# isort: skip_file
 """Serializers for project."""
 
 from drf_extra_fields.fields import Base64ImageField

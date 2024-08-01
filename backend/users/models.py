@@ -1,3 +1,4 @@
+# isort: skip_file
 """Models."""
 
 from django.contrib.auth.models import AbstractUser
