@@ -31,9 +31,9 @@ services:
   nginx:
     image: nginx:1.19.3
     ports:
-      - "8000:80"
+      - "10000:80"
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - ../frontend/build:/usr/share/nginx/html/
       - ../docs/:/usr/share/nginx/html/api/docs/
       - static:/staticfiles/
@@ -41,3 +41,4 @@ services:
     depends_on:
       - frontend
       - backend
+      
