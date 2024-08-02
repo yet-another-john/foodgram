@@ -4,7 +4,7 @@
 
 ### Ссылка на сайт
 
-
+foodgram-yandex.zapto.org
 
 ### Авторы:
 
@@ -16,10 +16,6 @@ Python, Django, Django REST framework, Docker, Git Actions
 
 ### Как запустить проект:
 
-Форкнуть и клонировать репозиторий.
-```
-git@github.com:EEPIM/foodgram.git
-```
 Создвть файл с переменными окружения .env.
 POSTGRES_DB=foodgram
 POSTGRES_USER=foodgram_user
