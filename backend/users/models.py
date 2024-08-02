@@ -1,86 +1,66 @@
-# isort: skip_file
-"""Models."""
-
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import RegexValidator
 from django.db import models
-
-from foodgram.constants import (
-    MAX_LENGTH_OF_EMAIL,
-    MAX_LENGTH_OF_FIRST_NAME,
-    MAX_LENGTH_OF_LAST_NAME,
-)
 
 
 class User(AbstractUser):
-    """Модель пользователей."""
 
     email = models.EmailField(
-        verbose_name='Электронная почта',
-        max_length=MAX_LENGTH_OF_EMAIL,
+        max_length=254,
         unique=True,
     )
-    first_name = models.CharField(
-        verbose_name='Имя пользователя',
-        max_length=MAX_LENGTH_OF_FIRST_NAME,
+    username = models.CharField(
+        max_length=150,
+        unique=True,
+        validators=(RegexValidator(r'^[\w.@+-]+\Z'),),
     )
-    last_name = models.CharField(
-        verbose_name='Фамилия пользователя',
-        max_length=MAX_LENGTH_OF_LAST_NAME,
-    )
+    first_name = models.CharField(max_length=150)
+    last_name = models.CharField(max_length=150)
+    password = models.CharField(max_length=150)
     avatar = models.ImageField(
-        verbose_name='Аватар пользователя',
         upload_to='users/images/',
-        default=None,
-        blank=True,
         null=True,
+        default=None
     )
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'username']
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["username", "first_name", "last_name", "password", ]
 
     class Meta:
-        """User."""
-
-        verbose_name = 'Пользователь'
+        verbose_name = 'пользователь'
         verbose_name_plural = 'Пользователи'
-        ordering = (
-            'username',
-            'email',
-        )
 
     def __str__(self):
-        """About model."""
         return self.username
 
 
 class Follow(models.Model):
-    """Модель подписок."""
+
+    follower = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        null=True,
+        related_name='follower',
+        verbose_name='подписчик',
+    )
 
     author = models.ForeignKey(
         User,
-        verbose_name='Автор',
-        related_name='following',
         on_delete=models.CASCADE,
-    )
-    user = models.ForeignKey(
-        User,
-        verbose_name='Подписчик',
-        related_name='follower',
-        on_delete=models.CASCADE,
+        null=True,
+        related_name='author',
+        verbose_name='автор',
     )
 
     class Meta:
-        """Follow."""
-
-        verbose_name = 'Подписка'
+        verbose_name = 'подписка'
         verbose_name_plural = 'Подписки'
-        constraints = (
+        constraints = [
             models.UniqueConstraint(
-                fields=('user', 'author'),
-                name='unique_follow'
-            ),
-        )
+                fields=['follower', 'author'],
+                name='unique_following'
+            )
+        ]
 
     def __str__(self):
-        """About model."""
-        return f'{self.user.username} подписан на {self.author.username}.'
+        return f'{self.follower} - {self.author}'

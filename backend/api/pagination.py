@@ -1,10 +1,6 @@
-# isort: skip_file
-"""Pagination class."""
-
 from rest_framework.pagination import PageNumberPagination
 
 
-class LimitPaginator(PageNumberPagination):
-    """Jграничение вывода."""
+class RecipePagination(PageNumberPagination):
 
     page_size_query_param = 'limit'

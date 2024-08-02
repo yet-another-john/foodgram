@@ -1,22 +1,17 @@
-# isort: skip_file
-"""Urls."""
-
 from django.urls import include, path
-from rest_framework import routers
+from rest_framework.routers import DefaultRouter
 
-from api.views import (CustomUserViewSet, IngredientViewSet, RecipeViewSet,
-                       TagViewSet)
+from api.views import (
+    TagsViewSet, IngredientsViewSet, RecipesViewSet, CustomUserViewSet
+)
 
-app_name = 'api'
-
-router_v1 = routers.DefaultRouter()
-
-router_v1.register(r'users', CustomUserViewSet, basename='users')
-router_v1.register(r'tags', TagViewSet, basename='tags')
-router_v1.register(r'ingredients', IngredientViewSet, basename='ingredients')
-router_v1.register(r'recipes', RecipeViewSet, basename='recipes')
+router = DefaultRouter()
+router.register(r'users', CustomUserViewSet)
+router.register(r'users/me/avatar', CustomUserViewSet, basename='avatar')
+router.register(r'tags', TagsViewSet)
+router.register(r'ingredients', IngredientsViewSet)
+router.register(r'recipes', RecipesViewSet)
 
 urlpatterns = [
-    path('', include(router_v1.urls)),
-    path(r'auth/', include('djoser.urls.authtoken')),
+    path('api/', include(router.urls))
 ]
