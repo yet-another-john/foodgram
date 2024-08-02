@@ -16,14 +16,6 @@ Python, Django, Django REST framework, Docker, Git Actions
 
 ### Как запустить проект:
 
-Создвть файл с переменными окружения .env.
-POSTGRES_DB=foodgram
-POSTGRES_USER=foodgram_user
-POSTGRES_PASSWORD=foodgram_password
-DB_NAME=foodgram
-DB_HOST=db
-DB_PORT=5432
-
 Установить зависимости:
 ```
 pip install -r requirements.txt
