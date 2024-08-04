@@ -12,6 +12,13 @@ router.register(r'tags', TagsViewSet)
 router.register(r'ingredients', IngredientsViewSet)
 router.register(r'recipes', RecipesViewSet)
 
+"""
 urlpatterns = [
     path('api/', include(router.urls))
+]
+"""
+
+urlpatterns = [
+    path('', include(router.urls)),
+    path('', include('djoser.urls')),
 ]

@@ -6,6 +6,10 @@
 
 foodgram-yandex.zapto.org
 
+/admin:
+stoliarovea@mail.ru
+lenovolenovo
+
 ### Авторы:
 
 Евгений

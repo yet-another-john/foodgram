@@ -2,17 +2,30 @@ from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator
 from django.db import models
 
+from backend.constants import (MAX_LENGTH_OF_INGREDIENT,
+                               MAX_LENGTH_OF_UNIT,
+                               MAX_LENGTH_OF_TAG,
+                               MAX_LENGTH_OF_TAG_SLUG,
+                               MAX_LENGTH_OF_RECIPE)
+
 User = get_user_model()
 
 
 class Ingredient(models.Model):
 
-    name = models.CharField('Ингредиент', max_length=50,)
-    measurement_unit = models.CharField('Единица измерения', max_length=10)
+    name = models.CharField('Ингредиент', max_length=MAX_LENGTH_OF_INGREDIENT,)
+    measurement_unit = models.CharField('Единица измерения',
+                                        max_length=MAX_LENGTH_OF_UNIT)
 
     class Meta:
         verbose_name = 'ингредиент'
         verbose_name_plural = 'Ингредиенты'
+        constraints = [
+            models.UniqueConstraint(
+                fields=['name', 'measurement_unit'],
+                name='unique_ingredient',
+            ),
+        ]
 
     def __str__(self):
         return self.name
@@ -20,8 +33,8 @@ class Ingredient(models.Model):
 
 class Tag(models.Model):
 
-    name = models.CharField('Тег', max_length=25)
-    slug = models.CharField('Слаг', max_length=25)
+    name = models.CharField('Тег', max_length=MAX_LENGTH_OF_TAG)
+    slug = models.CharField('Слаг', max_length=MAX_LENGTH_OF_TAG_SLUG)
 
     class Meta:
         verbose_name = 'тег'
@@ -55,7 +68,7 @@ class Recipe(models.Model):
         default=None,
         verbose_name='Изображение'
     )
-    name = models.CharField('Название', max_length=200)
+    name = models.CharField('Название', max_length=MAX_LENGTH_OF_RECIPE)
     text = models.TextField('Описание')
     cooking_time = models.PositiveSmallIntegerField(
         'Время приготовления',

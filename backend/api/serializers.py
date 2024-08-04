@@ -9,6 +9,9 @@ from recipes.models import (
 )
 from users.models import Follow
 
+from backend.constants import (MAX_LENGTH_OF_FIRST_NAME,
+                               MAX_LENGTH_OF_LAST_NAME)
+
 User = get_user_model()
 
 
@@ -16,8 +19,10 @@ class CustomUserCreateSerializer(UserCreateSerializer):
     """Сериализатор для редактирования пользователя."""
 
     email = serializers.EmailField(required=True)
-    first_name = serializers.CharField(required=True, max_length=150)
-    last_name = serializers.CharField(required=True, max_length=150)
+    first_name = serializers.CharField(required=True,
+                                       max_length=MAX_LENGTH_OF_FIRST_NAME)
+    last_name = serializers.CharField(required=True,
+                                      max_length=MAX_LENGTH_OF_LAST_NAME)
 
     class Meta:
         model = User
