@@ -18,6 +18,16 @@ lenovolenovo
 
 Python, Django, Django REST framework, Docker, Git Actions
 
+### Необходимые переменные окружения:
+
+POSTGRES_DB=
+POSTGRES_USER=
+POSTGRES_PASSWORD=
+DB_NAME=
+DB_HOST=
+DB_PORT=
+SECRET_KEY=
+
 ### Как запустить проект:
 
 Установить зависимости:
