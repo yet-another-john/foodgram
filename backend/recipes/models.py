@@ -74,6 +74,8 @@ class Recipe(models.Model):
         validators=[MinValueValidator(1)],
     )
 
+    author_id = models.PositiveSmallIntegerField('Время приготовления')
+
     class Meta:
         verbose_name = 'рецепт'
         verbose_name_plural = 'Рецепты'
