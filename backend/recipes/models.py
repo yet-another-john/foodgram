@@ -61,7 +61,7 @@ class Recipe(models.Model):
 #        related_name='recipes',
 #        verbose_name='Автор'
 #    )
-    author_id = models.PositiveSmallIntegerField('Время приготовления',
+    author = models.PositiveSmallIntegerField('Время приготовления',
                                                  default=None)
     image = models.ImageField(
         upload_to='recipes/images/',
