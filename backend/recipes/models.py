@@ -55,12 +55,14 @@ class Recipe(models.Model):
         Tag,
         verbose_name='Тег',
     )
-    author = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='recipes',
-        verbose_name='Автор'
-    )
+#    author = models.ForeignKey(
+#        User,
+#        on_delete=models.CASCADE,
+#        related_name='recipes',
+#        verbose_name='Автор'
+#    )
+    author_id = models.PositiveSmallIntegerField('Время приготовления',
+                                                 default=None)
     image = models.ImageField(
         upload_to='recipes/images/',
         blank=True, null=True,
@@ -73,8 +75,6 @@ class Recipe(models.Model):
         'Время приготовления',
         validators=[MinValueValidator(1)],
     )
-
-    author_id = models.PositiveSmallIntegerField('Время приготовления')
 
     class Meta:
         verbose_name = 'рецепт'
