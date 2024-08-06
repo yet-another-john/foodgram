@@ -5,6 +5,16 @@ from django.urls import include, path
 
 from api.views import ShortLinkView
 
+"""
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('api.urls')),
+    path('api/', include('djoser.urls')),
+    path('api/auth/', include('djoser.urls.authtoken')),
+    path('s/<str:encoded_id>/', ShortLinkView.as_view(), name='shortlink'),
+]
+"""
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),

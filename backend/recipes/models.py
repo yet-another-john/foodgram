@@ -56,33 +56,23 @@ class Recipe(models.Model):
         Tag,
         verbose_name='Тег',
     )
-
-    image = models.ImageField(
-        upload_to='recipes/images/',
-        blank=True, null=True,
-        default=None,
-        verbose_name='Изображение'
-    )
-
-    name = models.CharField('Название', max_length=MAX_LENGTH_OF_RECIPE)
-
-    text = models.TextField('Описание')
-
-    cooking_time = models.PositiveSmallIntegerField(
-        'Время приготовления',
-        validators=[MinValueValidator(1)],
-    )
-
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         related_name='recipes',
         verbose_name='Автор'
     )
-
-    pub_date = models.DateTimeField(
-        'Дата публикации',
-        auto_now_add=True,
+    image = models.ImageField(
+        upload_to='recipes/images/',
+        blank=True, null=True,
+        default=None,
+        verbose_name='Изображение'
+    )
+    name = models.CharField('Название', max_length=MAX_LENGTH_OF_RECIPE)
+    text = models.TextField('Описание')
+    cooking_time = models.PositiveSmallIntegerField(
+        'Время приготовления',
+        validators=[MinValueValidator(1)],
     )
 
     class Meta:
