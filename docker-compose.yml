@@ -14,7 +14,7 @@ services:
       - pg_data:/var/lib/postgresql/data
 
   backend:
-    image: stoliarovea/foodgram_backend
+    build: ./backend/
     env_file: .env
     volumes:
       - static:/backend_static
@@ -24,14 +24,14 @@ services:
 
   frontend:
     env_file: .env
-    image: stoliarovea/foodgram_frontend
+    build: ./frontend/
     command: cp -r /app/build/. /frontend_static/
     volumes:
       - static:/frontend_static
 
   gateway:
     env_file: .env
-    image: stoliarovea/foodgram_gateway
+    build: ./gateway/
     depends_on:
       - backend
       - frontend
