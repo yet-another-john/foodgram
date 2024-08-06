@@ -8,8 +8,7 @@ from backend.constants import (MAX_LENGTH_OF_INGREDIENT,
                                MAX_LENGTH_OF_TAG_SLUG,
                                MAX_LENGTH_OF_RECIPE)
 
-User = get_user_model()
-
+from users.models import User
 
 class Ingredient(models.Model):
 
