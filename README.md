@@ -7,14 +7,6 @@
 
 foodgram-yandex.zapto.org
 
-/admin:
-stoliarovea@mail.ru
-lenovolenovo
-
-### Авторы:
-
-Евгений
-
 ### Стэк:
 
 Python, Django, Django REST framework, Docker, Git Actions
